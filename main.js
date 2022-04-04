@@ -322,7 +322,7 @@ $(function () {
             else {
                 value_txt = value_txt;
             }
-            var url = "https://localhost:8080/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=" + value_layer + "&CQL_FILTER" + value_attribute + "+" + value_operator + "+'" + value_txt + "'&outputFormat=application/json"
+            var url = "http://localhost:8080/geoserver/wd_gis/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=" + value_layer + "&CQL_FILTER" + value_attribute + "+" + value_operator + "+'" + value_txt + "'outputFormat=application/json"
             console.log(url);
             newaddGeoJsonToMap(url);
             newpopulateQueryTable(url);
