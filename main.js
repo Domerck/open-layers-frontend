@@ -93,13 +93,13 @@ map.addLayer(Apopong);
 
 
 //Control Layers
-var layerSwitcher = new ol.control.LayerSwitcher({
-    activationMode: 'click',
-    startActive: false,
-    groupSelectStyle:'children'
-});
+// var layerSwitcher = new ol.control.LayerSwitcher({
+//     activationMode: 'click',
+//     startActive: false,
+//     groupSelectStyle:'children'
+// });
 
-map.addControl(layerSwitcher);
+// map.addControl(layerSwitcher);
 
 function toggleLayer(e) {
     var layerName = e.target.value;
