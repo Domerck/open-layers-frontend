@@ -155,18 +155,18 @@ var geojson;
 var featureOverlay;
 
 
-var qryButton = document.getElementById('qryButton');
-var qryElement =document.getElementById('qryButtonDiv');
+// var qryButton = document.getElementById('qryButton');
+// var qryElement =document.getElementById('qryButtonDiv');
 
 
-// var qryButton = document.createElement('button');
-// qryButton.innerHTML = '<img src="resources/images/query.png">'
-// qryButton.className = 'myButton';
-// qryButton.id = 'qryButton';
+var qryButton = document.createElement('button');
+qryButton.innerHTML = '<img src="resources/images/query.png">'
+qryButton.className = 'myButton';
+qryButton.id = 'qryButton';
 
-// var qryElement = document.createElement('div');
-// qryElement.className = 'myButtonDiv';
-// qryElement.appendChild(qryButton);
+var qryElement = document.createElement('div');
+qryElement.className = 'myButtonDiv';
+qryElement.appendChild(qryButton);
 
 var qryControl = new ol.control.Control({
     element: qryElement
@@ -243,7 +243,7 @@ $(function () {
         $(document).ready(function () {
             $.ajax({
                 type: "GET",
-                url: "http://localhost:8080/geoserver/wfs?service=WFS&request=DescribeFeatureType&version=1.1.0&typeName=" + value_layer,
+                url: "http://localhost:8080/geoserver/wfs?service=WFS&request=DescribeFeatureType&version=2.0.0&typeName=" + value_layer,
                 dataType: "xml",
                 success: function (xml) {
 
@@ -326,7 +326,7 @@ $(function () {
             }
 
           
-            var url = "http://localhost:8080/geoserver/gismapping/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=" + value_layer + "&CQL_FILTER" + value_attribute + "+" + value_operator + "+'" + value_txt + "'&outputFormat=application/json"
+            var url = "http://localhost:8080/geoserver/wd_gis/ows?service=WFS&version=2.0.0&request=GetFeature&typeName=" + value_layer + "&CQL_FILTER" + value_attribute + "+" + value_operator + "+'" + value_txt + "'&outputFormat=application/json"
             //console.log(url);
 
             newaddGeoJsonToMap(url);
@@ -391,7 +391,7 @@ function newpopulateQueryTable(url) {
 
             for (var key in data.features[i].properties) {
 
-                if (col.idexOf(key) === -1) {
+                if (col.indexOf(key) === -1) {
                     col.push(key);
                 }
             }
@@ -494,7 +494,7 @@ function newaddRowHandlers() {
                 var features = geojson.getSource().getFeatures();
 
                 for (i = 0; i < features.length; i++) {
-                    if (features[i].getID() == id) {
+                    if (features[i].getId() == id) {
                         featureOverlay.getSource().addFeature(features[i]);
 
                         featureOverlay.getSource().on('addfeature', function () {
