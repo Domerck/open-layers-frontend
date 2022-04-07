@@ -1,8 +1,10 @@
 var mapView = new ol.View({
     //GenSan Coordinates
-    center: ol.proj.fromLonLat([125.222 , 6.123]),
-    // center: ol.proj.fromLonLat([-73.96511, 40.77919]),
-    zoom: 11
+    //SRS 4326
+    center: ol.proj.fromLonLat([125.172, 6.113]),    
+
+    // center: ol.proj.fromLonLat([-73.96511 , 40.77919]),
+    zoom: 12    
 });
 
 var map = new ol.Map({
@@ -28,7 +30,6 @@ var LMManhattan = new ol.layer.Tile({
     source: new ol.source.TileWMS({
         url: 'http://localhost:8080/geoserver/tiger/wms',
         params: { 'LAYERS': 'tiger:poly_landmarks', 'TILED': true },
-        ratio: 1,
         serverType: 'geoserver',
         visible: true
     })
@@ -42,7 +43,6 @@ var RoadManhattan = new ol.layer.Tile({
     source: new ol.source.TileWMS({
         url: 'http://localhost:8080/geoserver/tiger/wms',
         params: { 'LAYERS': 'tiger:tiger_roads', 'TILED': true },
-        ratio: 1,
         serverType: 'geoserver',
         visible: true
     })
@@ -56,7 +56,6 @@ var POIManhattan = new ol.layer.Tile({
     source: new ol.source.TileWMS({
         url: 'http://localhost:8080/geoserver/tiger/wms',
         params: { 'LAYERS': 'tiger:poi', 'TILED': true },
-        ratio: 1,
         serverType: 'geoserver',
         visible: true
     })
@@ -70,7 +69,6 @@ var USAStates = new ol.layer.Tile({
     source: new ol.source.TileWMS({
         url: 'http://localhost:8080/geoserver/topp/wms',
         params: { 'LAYERS': 'topp:states', 'TILED': true },
-        ratio: 1,
         serverType: 'geoserver',
         visible: true
     })
@@ -115,7 +113,7 @@ function toggleLayer(e) {
 
 var mousePosition = new ol.control.MousePosition({
     className: 'mousePosition',
-    projection: 'ESPG:32651',
+    projection: 'ESPG:4326',
     coordinateFormat: function (coordinate) { return ol.coordinate.format(coordinate, '{y} , {x}', 6); }
 });
 
@@ -259,7 +257,9 @@ $(function () {
                             var type = $(this).attr('type');
                             //alert(type);
                             if (value != 'geom' && value != 'the_geom') {
-                                select.append ("<option class='ddindent' value='"+ type + "'>" + value + "</option>");
+
+                                select.append("<option class='ddindent' value='" + type + "'>" + value + "</option>");
+
                             }
                         });
                     });
@@ -294,6 +294,7 @@ $(function () {
 
     document.getElementById('attQryRun').onclick = function () {
         map.set("isLoading", 'YES');
+        
 
         if (featureOverlay) {
             featureOverlay.getSource().clear();
@@ -331,14 +332,17 @@ $(function () {
 
             newaddGeoJsonToMap(url);
             newpopulateQueryTable(url);
-            setTimeout(function () { newaddRowHandlers(url); }, 300);
+            setTimeout(function () { newaddRowHandlers(url); }, 10000);
+
             map.set("isLoading", 'NO');
         }
     }
 });
 
 function newaddGeoJsonToMap(url) {
-
+    // console.log(geojson);
+    // console.log(featureOverlay);
+    console.log(url);
     if (geojson) {
         geojson.getSource().clear();
         map.removeLayer(geojson);
@@ -368,12 +372,14 @@ function newaddGeoJsonToMap(url) {
         style: style,
     });
 
+    
     geojson.getSource().on('addfeature', function () {
         map.getView().fit(
             geojson.getSource().getExtent(),
             { duration: 1590, size: map.getSize(), maxZoom: 21 }
         );
     });
+    
     map.addLayer(geojson);
 };
 
@@ -495,6 +501,7 @@ function newaddRowHandlers() {
 
                 for (i = 0; i < features.length; i++) {
                     if (features[i].getId() == id) {
+
                         featureOverlay.getSource().addFeature(features[i]);
 
                         featureOverlay.getSource().on('addfeature', function () {
