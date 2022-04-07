@@ -219,21 +219,19 @@ body {
 
 .attyQueryDiv {
     position: absolute;
-    top: 5%;
-    left: 30%;
     display: none;
-    margin: 70px auto auto 45px;
-    width: 55%;
-    height: 55%;
+    margin: 75px auto auto 45px;
+    width: 280px;
+    /* height: 250px; */
     background-color: rgba(255, 255, 255, 0.9);
     border-radius: 12px;
     -webkit-animation-name: animatetop;
     -webkit-animation-duration: 0.4s;
     animation-name: animatetop;
-    animation-duration: 0.4s
+    animation-duration: 0.4s;
     /* font-family: inherit;
-    font-size: 1em;
-    line-height: 1.45; */
+    font-size: 1em; */
+    line-height: 1.45;
    
     /* padding: 10px;
     z-index: 4;
@@ -256,7 +254,7 @@ body {
 }
 
 .attyQueryDiv select {
-    width: 95%;
+    width: 225px;
     height: 35px;
     border: 0;
     border-radius: 3px;
@@ -267,7 +265,7 @@ body {
 
 
 .attyQueryDiv input {
-    width: 50%;
+    width: 225px;
     height: 35px;
     background-color: #d3d6db;
     border: 0;
@@ -276,8 +274,8 @@ body {
 }
 
 .attQryRun{
-    width: 120px;
-    height: 40px;
+    width: 19px;
+    height: 30px;
     color: #f5ffff;
     background-color: #616161;
     border: 0px;
