@@ -12,8 +12,10 @@ body {
 }
 
 #map {
+    /* position: absolute; */
     width: 100vw;
     height: 100vh;
+    z-index: -1;
 }
 
 .main-container{
@@ -24,12 +26,14 @@ body {
 
 
 .side-bar{
+    /* position: absolute; */
     display: flex;
     align-items: center;
     flex-direction: column;
     width: 20vw;
     height: 100vh;
     background-color: #7A9FE6;
+    z-index: 1;
 }
 
 .side-bar img{
@@ -75,6 +79,8 @@ body {
     border-radius: 12px;
     background-color: #c7d4eb;
 }
+
+
 
 
 .myBtn{
@@ -189,10 +195,7 @@ body {
     }
 
 
-  .qryButtonDiv{
-      margin-bottom: 30px;
-  }
-
+/* Attribute query start */
   .myButton {
     width: 180px;
     height: 50px;
@@ -201,7 +204,6 @@ body {
     border: 0px;
     border-radius: 10px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-
 }
 
 .myButton:hover{
@@ -214,29 +216,28 @@ body {
     position: relative;
     display: block;
     margin: 1px auto auto 10px;
+    z-index: 3;
 }
 
 .attyQueryDiv {
     position: absolute;
     display: none;
-    margin: 75px auto auto 45px;
+    margin: 60px auto auto 45px;
     width: 280px;
-    height: 420px;
+    height: 395px;
     background-color: rgba(255, 255, 255, 0.9);
     border-radius: 12px;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
     -webkit-animation-name: animatetop;
     -webkit-animation-duration: 0.4s;
     animation-name: animatetop;
     animation-duration: 0.4s;
     /* font-family: inherit;
     font-size: 1em; */
-
     /* line-height: 1.45; */
-   
-    padding: 10px;
-    /* z-index: 4;
-    overflow: scroll; */
+    padding: 6px;
+    z-index: 3;
+    /* overflow: scroll; */
 }
 
 #headerDiv {
@@ -300,12 +301,12 @@ body {
 .attListDiv {
     position: absolute;
     display: none;
-    margin: 350px auto 0px 300px;
+    margin: 473px auto 0px 280px;
     /* padding: 10px; */
     width: auto;
-    max-width: 900px;
+    max-width: 1060px;
     height: auto;
-    max-height: 250px;
+    max-height: 185px;
     background-color: rgba(255, 255, 255, 0.9);
     /* font-family: inherit;
     font-size: 1em; */
@@ -313,7 +314,7 @@ body {
     border-radius: 4px;
     border: 0px #d1d1d1;
     box-shadow: 2px 3px 2px rgba(0, 0, 0, 0.5);
-    /* z-index: 5; */
+    z-index: 2;
     overflow: scroll;
 }
 
@@ -324,7 +325,7 @@ body {
 
 .attListDiv #attQryTable, td, th {
     padding: 0px 5px 0px 5px;
-    border: 0px solid black;
+    border: 1px solid #7A9FE6;
 }
 
 .attListDiv #attQryTable th {
@@ -333,7 +334,7 @@ body {
     position: sticky;
     top: 0;
     font-style: normal;
-    padding: 5px 10px 5px 10px;
+    padding: 7px 10px 7px 10px;
 }
 
 .attListDiv #attQryTable tr:hover {

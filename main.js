@@ -17,7 +17,9 @@ var map = new ol.Map({
 var osmTile = new ol.layer.Tile({
     title: 'Open Street Map',
     visible: true,
-    source: new ol.source.OSM()
+    source: new ol.source.OSM({
+        projection: 'ESPG:36215'
+    })
 });
 
 map.addLayer(osmTile);
@@ -91,13 +93,13 @@ map.addLayer(Apopong);
 
 
 //Control Layers
-// var layerSwitcher = new ol.control.LayerSwitcher({
-//     activationMode: 'click',
-//     startActive: false,
-//     groupSelectStyle:'children'
-// });
+var layerSwitcher = new ol.control.LayerSwitcher({
+    activationMode: 'click',
+    startActive: false,
+    groupSelectStyle:'children'
+});
 
-// map.addControl(layerSwitcher);
+map.addControl(layerSwitcher);
 
 function toggleLayer(e) {
     var layerName = e.target.value;
@@ -118,6 +120,9 @@ var mousePosition = new ol.control.MousePosition({
 });
 
 map.addControl(mousePosition);
+
+//Pop up
+
 
 
 //Modal
@@ -145,7 +150,7 @@ window.onclick = function (event) {
         modal.style.display = "none";
     }
 }
-
+//
 
 // start: attribute query
 
@@ -353,7 +358,7 @@ function newaddGeoJsonToMap(url) {
         //color: 'rgba (0, 255, 255, 0.7)'
         //});
         stroke: new ol.style.Stroke({
-            color: '#FFFF00',
+            color: '#4169E1',
             width: 3
         }),
         image: new ol.style.Circle({
