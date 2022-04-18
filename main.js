@@ -125,32 +125,7 @@ map.addControl(mousePosition);
 
 
 
-//Modal
 
-// Get the modal
-var modal = document.getElementById("myModal");
-// Get the button that opens the modal
-var btn = document.getElementById("openModal");
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-
-// When the user clicks the button, open the modal 
-btn.onclick = function () {
-    modal.style.display = "block";
-}
-
-// When the user clicks on <span> (x), close the modal
-span.onclick = function () {
-    modal.style.display = "none";
-}
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function (event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
-//
 
 // start: attribute query
 
@@ -163,7 +138,7 @@ var featureOverlay;
 
 
 var qryButton = document.createElement('button');
-qryButton.innerHTML = '<img src="resources/images/query.png">'
+qryButton.innerHTML = '<span class="iconify" data-icon="mdi:database-search-outline"></span>'
 qryButton.className = 'myButton';
 qryButton.id = 'qryButton';
 
