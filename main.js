@@ -17,66 +17,30 @@ var map = new ol.Map({
 var osmTile = new ol.layer.Tile({
     title: 'Open Street Map',
     visible: true,
-    source: new ol.source.OSM({
-        projection: 'ESPG:36215'
-    })
+    type: 'base',
+    source: new ol.source.OSM
 });
 
 map.addLayer(osmTile);
 
+var noTile = new ol.layer.Tile({
+    title: 'None',
+    visible: false,
+    type: 'base'
+});
+
+map.addLayer(noTile);
+
+var baseGroup = new ol.layer.Group({
+    tile: 'Base Maps',
+    fold: true,
+    layers: [noTile, osmTile]
+});
+
+map.addLayer(baseGroup);
+
 
 //Map Layers
-
-var LMManhattan = new ol.layer.Tile({
-    title: "Manhattan Landmarks",
-    source: new ol.source.TileWMS({
-        url: 'http://localhost:8080/geoserver/tiger/wms',
-        params: { 'LAYERS': 'tiger:poly_landmarks', 'TILED': true },
-        serverType: 'geoserver',
-        visible: true
-    })
-})
-
-map.addLayer(LMManhattan);
-
-
-var RoadManhattan = new ol.layer.Tile({
-    title: "Manhattan Roads",
-    source: new ol.source.TileWMS({
-        url: 'http://localhost:8080/geoserver/tiger/wms',
-        params: { 'LAYERS': 'tiger:tiger_roads', 'TILED': true },
-        serverType: 'geoserver',
-        visible: true
-    })
-})
-
-map.addLayer(RoadManhattan);
-
-
-var POIManhattan = new ol.layer.Tile({
-    title: "Manhattan POI",
-    source: new ol.source.TileWMS({
-        url: 'http://localhost:8080/geoserver/tiger/wms',
-        params: { 'LAYERS': 'tiger:poi', 'TILED': true },
-        serverType: 'geoserver',
-        visible: true
-    })
-})
-
-map.addLayer(POIManhattan);
-
-
-var USAStates = new ol.layer.Tile({
-    title: "USA States",
-    source: new ol.source.TileWMS({
-        url: 'http://localhost:8080/geoserver/topp/wms',
-        params: { 'LAYERS': 'topp:states', 'TILED': true },
-        serverType: 'geoserver',
-        visible: true
-    })
-})
-
-map.addLayer(USAStates);
 
 var Apopong = new ol.layer.Tile({
     title: "Apopong",
@@ -91,6 +55,27 @@ var Apopong = new ol.layer.Tile({
 
 map.addLayer(Apopong);
 
+var Apopong2 = new ol.layer.Tile({
+    title: "ApopongV2",
+    source: new ol.source.TileWMS({
+        url: 'http://localhost:8080/geoserver/wd_gis/wms',
+        params: { 'LAYERS': 'wd_gis:apopong_cbms_sample', 'TILED': true },
+        ratio: 1,
+        serverType: 'geoserver',
+        visible: true
+    })
+});
+
+map.addLayer(Apopong2);
+
+// var overlayGroup = new ol.layer.Group({
+//     title: Overlays,
+//     fold: true,
+//     layers: [Apopong, Apopong2]
+// });
+
+// map.addLayer(overlayGroup);
+
 
 //Control Layers
 var layerSwitcher = new ol.control.LayerSwitcher({
@@ -100,6 +85,8 @@ var layerSwitcher = new ol.control.LayerSwitcher({
 });
 
 map.addControl(layerSwitcher);
+
+
 
 function toggleLayer(e) {
     var layerName = e.target.value;
