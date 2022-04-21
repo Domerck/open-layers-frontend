@@ -51,6 +51,48 @@
             
         </div>
         
+         <!-- Button Open/Close Modal -->
+         <button class="myBtn" id="openModal">Add Layer</button>
+
+         <!-- The Modal -->
+         <div id="myModal" class="modal">
+
+             <!-- Modal content -->
+             <div class="modal-content">
+
+                 <div class="modal-header">
+                     <span class="close">&times;</span>
+                     <h2>Add Service</h2>
+                 </div>
+
+                 <div class="modal-body">
+                     <form class="form-control" id="serviceForm">
+
+                         <label for="url">Title:</label>
+                         <input type="text" id="layerTitle" name="layerTitle"><br>
+
+                         <label for="url">URL:</label><br>
+                         <input type="text" id="layerUrl" name="layerUrl"><br>
+
+                         <label for="service">Select Service:</label><br>
+
+                         <div class="form-group">
+                             <select name="type" id="type">
+                                 <option value="wms">WMS</option>
+                                 <option value="csw">CSW</option>
+                                 <option value="wmts">WMTS</option>
+                                 <option value="tms">TMS</option>
+                                 <option value="wfs">WFS</option>
+                             </select>
+
+                             <button class="myBtn" id="addService" type="submit" onclick="addLi()"> Save </button>
+                         </div>
+
+                     </form>
+                 </div>
+             </div>
+
+         </div>
 
 
     <script src="http://localhost:8080/open-layers-frontend/resources/ol/ol.js"></script>
