@@ -12,60 +12,39 @@ body {
 }
 
 #map {
-    /* position: absolute; */
+    position: absolute;
     width: 100vw;
     height: 100vh;
-    z-index: -1;
-}
-
-.main-container{
-    display: flex;
-    padding: 0;
-    margin: 0;
-}
-
-
-.side-bar{
-    /* position: absolute; */
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    width: 20vw;
-    height: 100vh;
-    background-color: #7A9FE6;
     z-index: 1;
 }
 
-.side-bar img{
-    margin-top: 16px;
-    width: 110px;
-    height: 110px;
-}
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 6px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background-color: #c5d5f5;
+    box-shadow: inset 0 0 5px grey; 
+    border-radius: 5px;
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #7A9FE6; 
+    border-radius: 5px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #3b73db; 
+  }
 
-.side-bar h1{
-    font-size: 14px;
-}
-
-.layers-list{
-    display: flex;
-    flex-direction: column;
-    list-style-type:none;
-}
-
-.items{
-    margin: 10px;
-}
-
-
-.items label {
-    font-size: 14px;
-    color: #E5E5E9;
-}
-
-.map-container{
-    width: 80vw;
-    height: 100vh;
-}
+  ::-webkit-scrollbar-corner{
+      background-color: #7A9FE6;
+  }
 
 .mousePosition{
     position: fixed;
@@ -80,53 +59,187 @@ body {
     background-color: #c7d4eb;
 }
 
+  /* Add Animation */
+  @-webkit-keyframes animatetop {
+    from {left:-300px; opacity:0} 
+    to {left:0; opacity:1}
+  }
+  
+  @keyframes animatetop {
+    from {left:-300px; opacity:0}
+    to {left:0; opacity:1}
+  }
 
-
-
-.myBtn{
-    width: 180px;
-    height: 50px;
+/* Attribute query start */
+  .myButton {
+    position: absolute;
+    width: 40px;
+    height: 40px;
     color: #f5ffff;
-    background-color: #616161;
+    background-color: #7A9FE6;
     border: 0px;
     border-radius: 10px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.myBtn:hover{
+.myButton:hover{
     color: #f5ffff;
     background-color: #04aa6d;
 }
 
-.form-group{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+.myButton .iconify{
+    color: white;
+    width: 25px;
+    height: 25px;
 }
 
-.form-control{
-    padding: 20px;
+
+.myButtonDiv {
+    position: relative;
+    display: block;
+    margin: 50px auto auto 10px;
+    z-index: 3;
 }
 
-.form-control input, .form-control select{
-    margin-bottom: 15px;
-    outline: none;
-    height: 50px;
-    width: 100%;
+.attyQueryDiv {
+    position: absolute;
+    display: none;
+    margin: 50px auto auto 60px;
+    width: 280px;
+    height: 395px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 12px;
+    box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s;
+    /* font-family: inherit;
+    font-size: 1em; */
+    /* line-height: 1.45; */
+    padding: 6px;
+    z-index: 4;
+    /* overflow: scroll; */
+}
+
+#headerDiv {
+    padding: 8px;
+    background-color: #7A9FE6;
+}
+
+#headerDiv label {
+    font-size: 18px;
+    color: white;
+}
+
+
+.attyQueryDiv select {
+    width: 260px;
+    height: 35px;
+    border: 0;
+    border-radius: 3px;
+    margin: 0px auto 0px 10px;
     background-color: #d3d6db;
+    outline: none;
+}
+
+
+.attyQueryDiv input {
+    width: 260px;
+    height: 35px;
+    background-color: #d3d6db;
+    border: 0;
+    margin: 0px auto 0px 10px;
+    border-radius: 3px;
+    outline: none;
+}
+
+.attQryRun{
+    width: 100px;
+    height: 40px;
+    color: #f5ffff;
+    background-color: #7A9FE6;
     border: 0px;
     border-radius: 10px;
-    padding-left: 20px;
+    margin-left: 175px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
-.form-control select{
-   width: 30%;
+.attQryRun:hover{
+    color: #f5ffff;
+    background-color: #04aa6d;
 }
 
-.form-control select:selected{
-    width: 30%;
- }
+/* .attyQueryDiv label {
+    color: grey;
+    margin: 10px 10px 0px 10px;
+}
+
+.attyQueryDiv label:nth-child(1) {
+    margin: 10px;
+    font-weight: bold;
+} */
+
+.attListDiv {
+    position: absolute;
+    display: none;
+    margin: 469px auto 0px 190px;
+    /* padding: 10px; */
+    width: auto;
+    max-width: 1060px;
+    height: auto;
+    max-height: 185px;
+    background-color: rgba(255, 255, 255, 0.9);
+    /* font-family: inherit;
+    font-size: 1em; */
+    line-height: 1.45;
+    border-radius: 4px;
+    border: 0px #d1d1d1;
+    box-shadow: 2px 3px 2px rgba(0, 0, 0, 0.5);
+    z-index: 2;
+    overflow: scroll;
+}
+
+.attListDiv #attQryTable {
+    padding: 0;
+    border-collapse: collapse;
+}
+
+.attListDiv #attQryTable, td, th {
+    text-align: justify;
+    padding: 5px;
+    border: 1px solid #7A9FE6;
+}
+
+
+.attListDiv #attQryTable th {
+    color: black;
+    background-color: #d1d8e2;
+    position: sticky;
+    top: 0;
+    font-style: normal;
+    height: 20px;
+    padding: 7px 10px 7px 10px;
+}
+
+.attListDiv #attQryTable tr:hover {
+    font-weight: bolder; 
+    /* background-color: rgb(255,255,255); */
+    background-color: lightgrey;
+}
+
+
+
+
+
+
+
+
+
+
 
 /* The Modal (background) */
 .modal {
@@ -192,154 +305,79 @@ body {
   
   .modal-body {
       padding: 2px 16px;
-    }
+    } 
 
 
 /* Attribute query start */
-  .myButton {
-    width: 180px;
-    height: 50px;
-    color: #f5ffff;
-    background-color: #616161;
-    border: 0px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-}
-
-.myButton:hover{
-    color: #f5ffff;
-    background-color: #04aa6d;
-}
-
-
-.myButtonDiv {
-    position: relative;
-    display: block;
-    margin: 1px auto auto 10px;
-    z-index: 3;
-}
-
-.attyQueryDiv {
+#openModal{
     position: absolute;
-    display: none;
-    margin: 60px auto auto 45px;
-    width: 280px;
-    height: 395px;
-    background-color: rgba(255, 255, 255, 0.9);
-    border-radius: 12px;
-    box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-    -webkit-animation-name: animatetop;
-    -webkit-animation-duration: 0.4s;
-    animation-name: animatetop;
-    animation-duration: 0.4s;
-    /* font-family: inherit;
-    font-size: 1em; */
-    /* line-height: 1.45; */
-    padding: 6px;
-    z-index: 3;
-    /* overflow: scroll; */
-}
-
-#headerDiv {
-    padding: 8px;
-    background-color: #7A9FE6;
-}
-
-#headerDiv label {
-    font-size: 18px;
-    color: white;
-}
-
-
-.attyQueryDiv select {
-    width: 260px;
-    height: 35px;
-    border: 0;
-    border-radius: 3px;
-    margin: 0px auto 0px 10px;
-    background-color: #d3d6db;
-    outline: none;
-}
-
-
-.attyQueryDiv input {
-    width: 260px;
-    height: 35px;
-    background-color: #d3d6db;
-    border: 0;
-    margin: 0px auto 0px 10px;
-    border-radius: 3px;
-    outline: none;
-}
-
-.attQryRun{
-    width: 100px;
+    width: 40px;
     height: 40px;
     color: #f5ffff;
-    background-color: #616161;
+    background-color: #7A9FE6;
     border: 0px;
     border-radius: 10px;
-    margin-left: 175px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 100px auto auto 10px;
 }
 
-.attQryRun:hover{
+#openModal:hover{
     color: #f5ffff;
     background-color: #04aa6d;
 }
 
-/* .attyQueryDiv label {
-    color: grey;
-    margin: 10px 10px 0px 10px;
+#openModal .iconify{
+  color: white;
+  width: 25px;
+  height: 25px;
 }
 
-.attyQueryDiv label:nth-child(1) {
-    margin: 10px;
-    font-weight: bold;
-} */
 
-.attListDiv {
-    position: absolute;
-    display: none;
-    margin: 473px auto 0px 280px;
-    /* padding: 10px; */
-    width: auto;
-    max-width: 1060px;
-    height: auto;
-    max-height: 185px;
-    background-color: rgba(255, 255, 255, 0.9);
-    /* font-family: inherit;
-    font-size: 1em; */
-    line-height: 1.45;
-    border-radius: 4px;
-    border: 0px #d1d1d1;
-    box-shadow: 2px 3px 2px rgba(0, 0, 0, 0.5);
-    z-index: 2;
-    overflow: scroll;
+.form-group{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
-.attListDiv #attQryTable {
-    padding: 0;
-    border-collapse: collapse;
+.form-control{
+  padding: 20px;
 }
 
-.attListDiv #attQryTable, td, th {
-    padding: 0px 5px 0px 5px;
-    border: 1px solid #7A9FE6;
+.form-control input, .form-control select{
+  margin-bottom: 15px;
+  outline: none;
+  height: 50px;
+  width: 100%;
+  background-color: #d3d6db;
+  border: 0px;
+  border-radius: 10px;
+  padding-left: 20px;
 }
 
-.attListDiv #attQryTable th {
-    color: white;
-    background-color: #7A9FE6;
-    position: sticky;
-    top: 0;
-    font-style: normal;
-    padding: 7px 10px 7px 10px;
+.form-control select{
+ width: 30%;
 }
 
-.attListDiv #attQryTable tr:hover {
-    font-weight: bolder; 
-    /* background-color: rgb(255,255,255); */
-    background-color: lightgrey;
+.form-control select:selected{
+  width: 30%;
+}
+
+.myBtn{
+  width: 180px;
+  height: 50px;
+  color: #f5ffff;
+  background-color: #7A9FE6;
+  border: 0px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+
+}
+
+.myBtn:hover{
+  color: #f5ffff;
+  background-color: #04aa6d;
 }
 
