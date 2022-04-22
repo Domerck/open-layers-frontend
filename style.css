@@ -21,7 +21,7 @@ body {
 /* width */
 ::-webkit-scrollbar {
     width: 10px;
-    height: 10px;
+    height: 6px;
   }
   
   /* Track */
@@ -186,7 +186,7 @@ body {
 .attListDiv {
     position: absolute;
     display: none;
-    margin: 470px auto 0px 280px;
+    margin: 469px auto 0px 190px;
     /* padding: 10px; */
     width: auto;
     max-width: 1060px;
@@ -209,16 +209,19 @@ body {
 }
 
 .attListDiv #attQryTable, td, th {
-    padding: 0px 5px 0px 5px;
+    text-align: justify;
+    padding: 5px;
     border: 1px solid #7A9FE6;
 }
 
+
 .attListDiv #attQryTable th {
-    color: white;
-    background-color: #7A9FE6;
+    color: black;
+    background-color: #d1d8e2;
     position: sticky;
     top: 0;
     font-style: normal;
+    height: 20px;
     padding: 7px 10px 7px 10px;
 }
 
@@ -227,6 +230,14 @@ body {
     /* background-color: rgb(255,255,255); */
     background-color: lightgrey;
 }
+
+
+
+
+
+
+
+
 
 
 
@@ -369,3 +380,4 @@ body {
   color: #f5ffff;
   background-color: #04aa6d;
 }
+
