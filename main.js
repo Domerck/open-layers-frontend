@@ -236,7 +236,7 @@ function addMapLayerList() {
     $(document).ready(function () {
         $.ajax({
             type: "GET",
-            url: "http://localhost:8080/geoserver/wfs?request=getCapabilities",
+            url: "http://localhost:8080/geoserver/wd_gis/wfs?request=getCapabilities",
             datatype: "xml",
             success: function (xml) {
                 var select = $('#selectLayer');
@@ -502,6 +502,7 @@ function newaddRowHandlers() {
         rows[i].onclick = function () {
             return function () {
                 featureOverlay.getSource().clear();
+               
 
                 $(function () {
                     $("#attQryTable td").each(function () {
