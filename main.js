@@ -13,7 +13,7 @@ var map = new ol.Map({
 });
 
 //Tile Layer
-
+//Map for Open Street Map
 var osmTile = new ol.layer.Tile({
     title: 'Open Street Map',
     visible: true,
@@ -23,6 +23,7 @@ var osmTile = new ol.layer.Tile({
 
 map.addLayer(osmTile);
 
+//No Map
 var noTile = new ol.layer.Tile({
     title: 'None',
     visible: false,
@@ -31,6 +32,7 @@ var noTile = new ol.layer.Tile({
 
 map.addLayer(noTile);
 
+//Group Maps
 var baseGroup = new ol.layer.Group({
     tile: 'Base Maps',
     fold: true,
@@ -42,11 +44,12 @@ map.addLayer(baseGroup);
 
 //Map Layers
 
+//Fetch Appopong Layer from Geoserver
 var Apopong = new ol.layer.Tile({
     title: "Apopong",
     source: new ol.source.TileWMS({
         url: 'http://localhost:8080/geoserver/wd_gis/wms',
-        params: { 'LAYERS': 'wd_gis:apopong', 'TILED': true },
+        params: { 'LAYERS': 'wd_gis:apopong cbms sample', 'TILED': true },
         ratio: 1,
         serverType: 'geoserver',
         visible: true
@@ -55,29 +58,19 @@ var Apopong = new ol.layer.Tile({
 
 map.addLayer(Apopong);
 
-var Apopong2 = new ol.layer.Tile({
-    title: "ApopongV2",
-    source: new ol.source.TileWMS({
-        url: 'http://localhost:8080/geoserver/wd_gis/wms',
-        params: { 'LAYERS': 'wd_gis:apopong_cbms_sample', 'TILED': true },
-        ratio: 1,
-        serverType: 'geoserver',
-        visible: true
-    })
-});
 
-map.addLayer(Apopong2);
-
+//Group Layers
 // var overlayGroup = new ol.layer.Group({
 //     title: Overlays,
 //     fold: true,
-//     layers: [Apopong, Apopong2]
+//     layers: [Apopong]
 // });
 
 // map.addLayer(overlayGroup);
 
 
 //Control Layers
+//Switch Layers and Maps
 var layerSwitcher = new ol.control.LayerSwitcher({
     activationMode: 'click',
     startActive: false,
@@ -88,18 +81,19 @@ map.addControl(layerSwitcher);
 
 
 
-function toggleLayer(e) {
-    var layerName = e.target.value;
-    var checkedStatus = e.target.checked;
-    var layerList = map.getLayers();
+// function toggleLayer(e) {
+//     var layerName = e.target.value;
+//     var checkedStatus = e.target.checked;
+//     var layerList = map.getLayers();
 
-    layerList.forEach(function (element) {
-        if (layerName == element.get('title'))
-            element.setVisible(checkedStatus)
-    });
-}
+//     layerList.forEach(function (element) {
+//         if (layerName == element.get('title'))
+//             element.setVisible(checkedStatus)
+//     });
+// }
 
 
+// Show Longitude and Latitude in Maps
 var mousePosition = new ol.control.MousePosition({
     className: 'mousePosition',
     projection: 'ESPG:4326',
@@ -109,6 +103,8 @@ var mousePosition = new ol.control.MousePosition({
 map.addControl(mousePosition);
 
 
+
+//Start: add service to code (not finished yet)
 
 // Get the modal
 var modal = document.getElementById("myModal");
@@ -134,7 +130,7 @@ window.onclick = function (event) {
     }
 }
 
-//add to map
+//Add to map
 
 var srvControl = new ol.control.Control({
     element: btn
@@ -142,7 +138,7 @@ var srvControl = new ol.control.Control({
 
 map.addControl(srvControl);
 
-//start: add service to code (not finished yet)
+
 //Add Layer To List of Layers 
 
 function addLi() {
@@ -165,19 +161,15 @@ function addLi() {
     });
 }
 
+//End Add Service to Code
 
 
-
-// start: attribute query
+// Start: Attribute query
 
 var geojson;
 var featureOverlay;
 
-
-// var qryButton = document.getElementById('qryButton');
-// var qryElement =document.getElementById('qryButtonDiv');
-
-
+//Start: Modal for Attribute Query
 var qryButton = document.createElement('button');
 qryButton.innerHTML = '<span class="iconify" data-icon="mdi:database-search-outline"></span>'
 qryButton.className = 'myButton';
@@ -404,6 +396,7 @@ function newaddGeoJsonToMap(url) {
     map.addLayer(geojson);
 };
 
+//Start: Table for Queried data
 function newpopulateQueryTable(url) {
     if (typeof attributePanel !== 'undefined') {
         if (attributePanel.parentElement !== null) {

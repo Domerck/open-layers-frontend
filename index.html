@@ -6,6 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GSC Water District GIS</title>
+    
+    <!-- As these files are found inside the Tomcat Webapp folder & 
+    Per Tomcat standards, one should reference external files 
+    (this includes CSS, JS, Images, and other files
+    (exceptions are online links(jquery and icon hosting sites)))
+    in the localhost:*port* format as if they are calling to a link -->
 
     <link rel="stylesheet" href="http://localhost:8080/open-layers-frontend/resources/ol/ol.css">
     <link rel="stylesheet" href="http://localhost:8080/open-layers-frontend/resources/layerswitcher/ol-layerswitcher.css">
@@ -19,9 +25,11 @@
 
 
 <body>
-
+        <!-- Map Container -->
          <div id="map"></div>
         
+
+        <!-- Attribute Query Div -->
         <div class="attyQueryDiv" id="attyQueryDiv">
             <div class="headerDiv" id="headerDiv">
                 <label for="">Attribute Query</label>
@@ -47,11 +55,14 @@
 
         </div>
 
+        <!-- Querried Table Div -->
         <div class="attListDiv" id="attListDiv">
             
         </div>
         
-         <!-- Button Open/Close Modal -->
+
+
+         <!-- Modal for Adding service to the code -->
          <button class="myBtn" id="openModal">
             <span class="iconify" data-icon="bx:add-to-queue"></span>
          </button>
